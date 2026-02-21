@@ -9,31 +9,72 @@ import os
 # ---------------------------
 
 BASE_URL = "https://lib.eshia.ir"
-BOOK_ID = "12016"
-VOLUME = "1"
+BOOK_ID = "27897"
 
-OUTPUT_FILE = f"book_{BOOK_ID}_vol_{VOLUME}.json"
+OUTPUT_ROOT = "books"
 
-DELAY = 1   # seconds between requests
-MAX_PAGES_SAFETY = 1000  # safety stop
+DELAY = 0.6
+MAX_PAGES_SAFETY = 2000
+REQUEST_RETRIES = 3
 
 
 # ---------------------------
-# FETCH ONE PAGE
+# CREATE BOOK FOLDER
 # ---------------------------
 
-def fetch_page(page_number):
-    url = f"{BASE_URL}/{BOOK_ID}/{VOLUME}/{page_number}"
+BOOK_FOLDER = os.path.join(OUTPUT_ROOT, BOOK_ID)
+os.makedirs(BOOK_FOLDER, exist_ok=True)
 
-    try:
-        resp = requests.get(url, timeout=20)
-    except Exception as e:
-        print("Request error:", e)
-        return None, None
 
-    resp.encoding = "utf-8"
+# ---------------------------
+# SAFE REQUEST
+# ---------------------------
 
-    if resp.status_code != 200:
+def safe_get(url):
+    for i in range(REQUEST_RETRIES):
+        try:
+            r = requests.get(url, timeout=20)
+            r.encoding = "utf-8"
+            return r
+        except Exception:
+            print("Retry request:", url)
+            time.sleep(2)
+    return None
+
+
+# ---------------------------
+# DETECT LAST VOLUME
+# ---------------------------
+
+def volume_exists(volume):
+
+    url = f"{BASE_URL}/{BOOK_ID}/{volume}/0"
+
+    resp = safe_get(url)
+    if not resp:
+        return False
+
+    # if redirected to another volume → doesn't exist
+    final_url = resp.url
+
+    expected = f"/{BOOK_ID}/{volume}/"
+
+    if expected not in final_url:
+        return False
+
+    return True
+
+
+# ---------------------------
+# FETCH PAGE CONTENT
+# ---------------------------
+
+def fetch_page(volume, page_number):
+
+    url = f"{BASE_URL}/{BOOK_ID}/{volume}/{page_number}"
+
+    resp = safe_get(url)
+    if not resp or resp.status_code != 200:
         return None, None
 
     soup = BeautifulSoup(resp.text, "html.parser")
@@ -48,22 +89,31 @@ def fetch_page(page_number):
     if sticky:
         sticky.decompose()
 
-    # Keep HTML structure
     html_content = content_td.decode_contents()
 
     return html_content, resp.url
 
 
 # ---------------------------
-# MAIN SCRAPER LOOP
+# SCRAPE ONE VOLUME
 # ---------------------------
 
-def scrape_book():
+def scrape_volume(volume):
 
-    book_json = {
+    output_file = os.path.join(BOOK_FOLDER, f"vol_{volume}.json")
+
+    if os.path.exists(output_file):
+        print("Volume exists, skipping:", volume)
+        return
+
+    print("\n====================")
+    print("Scraping volume:", volume)
+    print("====================")
+
+    data = {
         "version": "1.0",
         "bookId": BOOK_ID,
-        "volumeNumber": int(VOLUME),
+        "volumeNumber": int(volume),
         "encoding": "utf-8",
         "source": "lib.eshia.ir",
         "pages": []
@@ -75,25 +125,24 @@ def scrape_book():
     while True:
 
         if page > MAX_PAGES_SAFETY:
-            print("Safety stop triggered.")
+            print("Safety stop pages.")
             break
 
-        print(f"Scraping page {page}")
+        print(f"Page {page}")
 
-        html, final_url = fetch_page(page)
+        html, final_url = fetch_page(volume, page)
 
         if html is None:
-            print("No content found. Stop.")
+            print("No content -> stop pages")
             break
 
-        # Detect last page via redirect loop
         if final_url == last_url:
-            print("Reached last page.")
+            print("Last page reached")
             break
 
         last_url = final_url
 
-        book_json["pages"].append({
+        data["pages"].append({
             "number": page,
             "html": html
         })
@@ -101,16 +150,32 @@ def scrape_book():
         page += 1
         time.sleep(DELAY)
 
-    return book_json
+    # Save volume
+    with open(output_file, "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False)
+
+    print("Saved:", output_file)
 
 
 # ---------------------------
-# SAVE JSON
+# MAIN LOOP ALL VOLUMES
 # ---------------------------
 
-def save_json(data):
-    with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
+def scrape_all_volumes():
+
+    volume = 1
+
+    while True:
+
+        print("\nChecking volume:", volume)
+
+        if not volume_exists(volume):
+            print("No more volumes.")
+            break
+
+        scrape_volume(volume)
+
+        volume += 1
 
 
 # ---------------------------
@@ -119,8 +184,6 @@ def save_json(data):
 
 if __name__ == "__main__":
 
-    result = scrape_book()
-    save_json(result)
+    scrape_all_volumes()
 
-    print("Done.")
-    print("Saved to:", OUTPUT_FILE)
+    print("\nDone.")
