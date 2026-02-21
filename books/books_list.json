@@ -1,0 +1,208 @@
+{
+  "categories": [
+    {
+      "id": "quran",
+      "nameFa": "علوم قرآن",
+      "nameAr": "علوم القرآن",
+      "icon": "📖",
+      "coverUrl": "https://example.com/images/categories/quran.jpg"
+    },
+    {
+      "id": "hadith",
+      "nameFa": "حدیث",
+      "nameAr": "الحديث",
+      "icon": "📿",
+      "coverUrl": "https://example.com/images/categories/hadith.jpg"
+    },
+    {
+      "id": "fiqh",
+      "nameFa": "فقه",
+      "nameAr": "الفقه",
+      "icon": "⚖️",
+      "coverUrl": "https://example.com/images/categories/fiqh.jpg"
+    },
+    {
+      "id": "theology",
+      "nameFa": "کلام",
+      "nameAr": "العقيدة",
+      "icon": "🕌",
+      "coverUrl": "https://example.com/images/categories/theology.jpg"
+    },
+    {
+      "id": "history",
+      "nameFa": "تاریخ",
+      "nameAr": "التاريخ",
+      "icon": "📜",
+      "coverUrl": "https://example.com/images/categories/history.jpg"
+    },
+    {
+      "id": "ethics",
+      "nameFa": "اخلاق",
+      "nameAr": "الأخلاق",
+      "icon": "✨",
+      "coverUrl": "https://example.com/images/categories/ethics.jpg"
+    }
+  ],
+  "authors": [
+    {
+      "id": "tabatabai",
+      "nameFa": "علامه طباطبایی",
+      "nameAr": "العلامة الطباطبائي",
+      "bioFa": "مفسر بزرگ قرآن و فیلسوف اسلامی",
+      "bioAr": "مفسر القرآن الكريم والفيلسوف الإسلامي",
+      "coverUrl": "https://example.com/images/authors/tabatabai.jpg"
+    },
+    {
+      "id": "kulayni",
+      "nameFa": "شیخ کلینی",
+      "nameAr": "الشيخ الكليني",
+      "bioFa": "محدث بزرگ شیعه و مؤلف الکافی",
+      "bioAr": "المحدث الكبير ومؤلف الكافي",
+      "coverUrl": "https://example.com/images/authors/kulayni.jpg"
+    },
+    {
+      "id": "shahid-thani",
+      "nameFa": "شهید ثانی",
+      "nameAr": "الشهيد الثاني",
+      "bioFa": "فقیه و عالم بزرگ شیعه",
+      "bioAr": "الفقیه والعالم الکبير",
+      "coverUrl": "https://example.com/images/authors/shahid-thani.jpg"
+    },
+    {
+      "id": "sharif-radi",
+      "nameFa": "سید رضی",
+      "nameAr": "السيد الرضي",
+      "bioFa": "گردآورنده نهج البلاغه",
+      "bioAr": "جامع نهج البلاغة",
+      "coverUrl": "https://example.com/images/authors/sharif-radi.jpg"
+    },
+    {
+      "id": "imam-sajjad",
+      "nameFa": "امام سجاد",
+      "nameAr": "الإمام السجاد",
+      "bioFa": "امام چهارم شیعیان",
+      "bioAr": "الإمام الرابع للشيعة",
+      "coverUrl": "https://example.com/images/authors/imam-sajjad.jpg"
+    },
+    {
+      "id": "yaqubi",
+      "nameFa": "یعقوبی",
+      "nameAr": "اليعقوبي",
+      "bioFa": "مورخ و جغرافی‌دان بزرگ",
+      "bioAr": "المؤرخ والجغرافي الكبير",
+      "coverUrl": "https://example.com/images/authors/yaqubi.jpg"
+    },
+    {
+      "id": "majlisi",
+      "nameFa": "علامه مجلسی",
+      "nameAr": "العلامة المجلسي",
+      "bioFa": "محدث و عالم بزرگ شیعه",
+      "bioAr": "المحدث والعالم الكبير",
+      "coverUrl": "https://example.com/images/authors/majlisi.jpg"
+    }
+  ],
+  "books": [
+    {
+      "id": "1",
+      "titleFa": "تفسیر المیزان",
+      "titleAr": "تفسير الميزان",
+      "authorId": "tabatabai",
+      "categoryId": "quran",
+      "coverUrl": "https://example.com/images/books/tafsir-almizan-vol1.jpg",
+      "coverPlaceholder": "📗",
+      "pages": 450,
+      "volumeNumber": 1,
+      "totalVolumes": 20
+    },
+    {
+      "id": "1-2",
+      "titleFa": "تفسیر المیزان",
+      "titleAr": "تفسير الميزان",
+      "authorId": "tabatabai",
+      "categoryId": "quran",
+      "coverUrl": "https://example.com/images/books/tafsir-almizan-vol2.jpg",
+      "coverPlaceholder": "📗",
+      "pages": 430,
+      "volumeNumber": 2,
+      "totalVolumes": 20
+    },
+    {
+      "id": "2",
+      "titleFa": "الکافی",
+      "titleAr": "الكافي",
+      "authorId": "kulayni",
+      "categoryId": "hadith",
+      "coverUrl": "https://example.com/images/books/kafi-vol1.jpg",
+      "coverPlaceholder": "📕",
+      "pages": 680,
+      "volumeNumber": 1,
+      "totalVolumes": 8
+    },
+    {
+      "id": "2-2",
+      "titleFa": "الکافی",
+      "titleAr": "الكافي",
+      "authorId": "kulayni",
+      "categoryId": "hadith",
+      "coverUrl": "https://example.com/images/books/kafi-vol2.jpg",
+      "coverPlaceholder": "📕",
+      "pages": 620,
+      "volumeNumber": 2,
+      "totalVolumes": 8
+    },
+    {
+      "id": "3",
+      "titleFa": "شرح لمعه",
+      "titleAr": "شرح اللمعة",
+      "authorId": "shahid-thani",
+      "categoryId": "fiqh",
+      "coverUrl": "https://example.com/images/books/sharh-lomah.jpg",
+      "coverPlaceholder": "📘",
+      "pages": 520
+    },
+    {
+      "id": "4",
+      "titleFa": "نهج البلاغه",
+      "titleAr": "نهج البلاغة",
+      "authorId": "sharif-radi",
+      "categoryId": "ethics",
+      "coverUrl": "https://example.com/images/books/nahj-al-balagha.jpg",
+      "coverPlaceholder": "📙",
+      "pages": 320
+    },
+    {
+      "id": "5",
+      "titleFa": "صحیفه سجادیه",
+      "titleAr": "الصحيفة السجادية",
+      "authorId": "imam-sajjad",
+      "categoryId": "ethics",
+      "coverUrl": "https://example.com/images/books/sahifa-sajjadiya.jpg",
+      "coverPlaceholder": "📔",
+      "pages": 180
+    },
+    {
+      "id": "6",
+      "titleFa": "تاریخ یعقوبی",
+      "titleAr": "تاريخ اليعقوبي",
+      "authorId": "yaqubi",
+      "categoryId": "history",
+      "coverUrl": "https://example.com/images/books/tarikh-yaqubi-vol2.jpg",
+      "coverPlaceholder": "📓",
+      "pages": 420,
+      "volumeNumber": 2,
+      "totalVolumes": 3
+    },
+    {
+      "id": "7",
+      "titleFa": "بحار الانوار",
+      "titleAr": "بحار الأنوار",
+      "authorId": "majlisi",
+      "categoryId": "hadith",
+      "coverUrl": "https://example.com/images/books/bihar-al-anwar-vol1.jpg",
+      "coverPlaceholder": "📗",
+      "pages": 890,
+      "volumeNumber": 1,
+      "totalVolumes": 110
+    }
+  ]
+}
