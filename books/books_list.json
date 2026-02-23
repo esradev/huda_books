@@ -67,6 +67,24 @@
       "bioFa": "حکیم و اصولی بزرگ شاگرد آخوند خراسانی",
       "bioAr": "الحکیم و الاصولی الکبیر تلمیذ آخوند خراسانی",
       "coverUrl": "https://example.com/images/authors/esfahani.jpg"
+    },
+    {
+      "id": "3",
+      "nameEn": "sabzavari",
+      "nameFa": "حاج ملاهادی سبزوارى",
+      "nameAr": "الحاج ملاهادی سبزوارى",
+      "bioFa": "فیلسوف و حکیم اسلامی قرن 13 هجری",
+      "bioAr": "الفيلسوف و الحکيم الإسلامي في القرن 13 الهجري",
+      "coverUrl": "https://example.com/images/authors/sabzavari.jpg"
+    },
+    {
+      "id": "4",
+      "nameEn": "molla sadra",
+      "nameFa": "ملا صدرا",
+      "nameAr": "ملا صدرا",
+      "bioFa": "فیلسوف و حکیم اسلامی قرن 11 هجری",
+      "bioAr": "الفيلسوف و الحکيم الإسلامي في القرن 11 الهجري",
+      "coverUrl": "https://example.com/images/authors/molla-sadra.jpg"
     }
   ],
   "books": [
@@ -89,6 +107,16 @@
       "coverUrl": "https://example.com/images/books/tafsir-almizan.jpg",
       "coverPlaceholder": "📗",
       "volumesCount": "4"
+    },
+    {
+      "id": "71465",
+      "titleFa": "اسفار اربعه",
+      "titleAr": "اسفار اربعه",
+      "authorId": "4",
+      "categoryId": "4",
+      "coverUrl": "https://example.com/images/books/asfar-arba.jpg",
+      "coverPlaceholder": "📗",
+      "volumesCount": "9"
     }
   ]
 }
